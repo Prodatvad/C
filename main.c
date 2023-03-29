@@ -11,13 +11,13 @@ printf("Enter size arr: ");
 scanf("%d", &mb);
 printf("\n");
 printf("Enter your arr: ");
-char *mas = NULL;
-mas = (char*)malloc(sizeof(char) * mb);
+char *mas = NULL; 
+mas = (char*)malloc(sizeof(*mas) * mb);
 if(mas == NULL) {                                               //Проверка памяти
     printf("\n");
     printf("Sorry, u don't have memory for the Array =(");
     printf("\n");
-return 1;
+exit(1);
 }
 scanf("%s", mas);
 
@@ -58,12 +58,12 @@ printf("\n");
 printf("Enter size arrB: ");
 scanf("%d", &mb2);
 char *masb = NULL;
-masb = (char*)malloc(sizeof(char) * mb2);
+masb = (char*)malloc(sizeof(*masb) * mb2);
 if(masb == NULL) {                                              //Проверка памяти 2
     printf("\n");
     printf("Sorry, u don't have memory for the ArrayB =(");
     printf("\n");
-return 1;
+exit(1);
 }
 
 int y = 0;
