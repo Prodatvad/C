@@ -9,18 +9,16 @@ int main() {
 int mb = 0;
 printf("Enter size arr: ");
 scanf("%d", &mb);
-if(mb <= 0) {                                               //Проверка памяти
+printf("\n");
+printf("Enter your arr: ");
+char *mas = NULL;
+mas = (char*)malloc(sizeof(char) * mb);
+if(mas == NULL) {                                               //Проверка памяти
     printf("\n");
     printf("Sorry, u don't have memory for the Array =(");
     printf("\n");
 return 1;
 }
-
-printf("\n");
-
-printf("Enter your arr: ");
-char *mas = NULL;
-mas = (char*)malloc(sizeof(char) * mb);
 scanf("%s", mas);
 
 printf("\n");
@@ -59,15 +57,14 @@ int mb2 = 0;
 printf("\n");
 printf("Enter size arrB: ");
 scanf("%d", &mb2);
-if(mb2 <= 0) {                                              //Проверка памяти 2
+char *masb = NULL;
+masb = (char*)malloc(sizeof(char) * mb2);
+if(masb == NULL) {                                              //Проверка памяти 2
     printf("\n");
     printf("Sorry, u don't have memory for the ArrayB =(");
     printf("\n");
 return 1;
 }
-
-char *masb = NULL;
-masb = (char*)malloc(sizeof(char) * mb2);
 
 int y = 0;
 while(b != 0) {                                             //Цикл с переводом инта в чар и занесением в массив
