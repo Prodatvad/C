@@ -1,71 +1,99 @@
-//Bilet_4
-
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum(char *arr, int b);
+int SumFunction(char *arr, int b);
+int SizeNumber(int z);
 
 int main() {
-char mas[10] = "97as97ap!";
-int c = 97;
 
-SumFunction(mas, c);
+int mb = 0;
+printf("Enter size arr: ");
+scanf("%d", &mb);
+if(mb <= 0) {                                               //Проверка памяти
+    printf("\n");
+    printf("Sorry, u don't have memory for the Array =(");
+    printf("\n");
+return 1;
+}
+
+printf("\n");
+
+printf("Enter your arr: ");
+char *mas = NULL;
+mas = (char*)malloc(sizeof(char) * mb);
+scanf("%s", mas);
+
+printf("\n");
+printf("Enter your number: ");
+int c = 0;
+scanf("%d", &c);
+
+printf("\nResult: %d\n", SumFunction(mas, c));
+free(mas);                                                  //Освобождение памяти
 
 return 0;
 }
 
+int SizeNumber(int z) {                                     //Функция по вычислению значности числа
+int l = 0;
+while(z != 0) {
+l++;
+z = z / 10;
+}
+return l;
+}
+
 int SumFunction(char *arr, int b) {
-    int sum;
-    char changeB;
-    changeB = b;
-    int n = 0;                                              // Кол-во повторябщихся чисел в массиве
+if(b < 0) {
+    printf("\n");
+    printf("Sorry my dear dude =(\nNumber < 0");
+    printf("\n");
+exit(1);
+}
 
-    if(b >= 0) {                                            // Сравнение, если число положительное
+int bb = b;
+int n = 0;
+int sizenum = SizeNumber(b) - 1;
 
-        if (b < 10) {                                                           //1) Сравнение, если число однозначное
-            for(int i = 0; arr[i] != '\0'; i++) {
-                int change1 = arr[i] - '0';
-                if(b == change1 || arr[i] == changeB) {
-                    n++;
-                    sum = b * n;
-                }
-                else;
+int mb2 = 0;
+printf("\n");
+printf("Enter size arrB: ");
+scanf("%d", &mb2);
+if(mb2 <= 0) {                                              //Проверка памяти 2
+    printf("\n");
+    printf("Sorry, u don't have memory for the ArrayB =(");
+    printf("\n");
+return 1;
+}
+
+char *masb = NULL;
+masb = (char*)malloc(sizeof(char) * mb2);
+
+int y = 0;
+while(b != 0) {                                             //Цикл с переводом инта в чар и занесением в массив
+    y = b % 10;
+    masb[sizenum] = y + '0';
+    sizenum--;
+    b = b / 10;
+}
+
+sizenum = SizeNumber(bb);                                   
+for(int i = sizenum; i < 10; i++) {                         //заполняем оставшуюся часть массива нулевым терминалом
+    masb[i] = '\0';
+}
+
+sizenum--;                                                  //Понижаем на один, чтобы было равно последнему записанному элементу в массиве B
+for(int i = 0; arr[i] != '\0'; i++) {
+    if(arr[i] == masb[0] && arr[i + sizenum] != '\0') {
+        for(int j = 0; masb[j] == arr[i + j]; j++) {
+            if(j == sizenum) {
+                n++;
+                i = i + sizenum;
             }
-            return printf("%d\n", sum);
-        }
-
-        else if (b >= 10 && b < 100) {                                          //2) Сравнение, если число двузначное
-            int num1 = b / 10; 
-            int num2 = b % 10; 
-            for(int i = 0; arr[i + 1] != '\0'; i++) {
-                int change1 = arr[i] - '0';
-                int change2 = arr[i + 1] - '0';
-                if(num1 == change1 && num2 == change2 || arr[i] == changeB) {   // Сравниваем первое число и второе
-                    n++;
-                    sum = b * n;
-                }
-            else;
-            }
-            return printf("%d\n", sum);
-        }
-
-        else if (b >= 100 && b < 1000) { //3) Сравнение, если число трехзначное
-            int num1 = b / 100;
-            int num2 = (b / 10) % 10;
-            int num3 = b % 10;
-            for(int i = 0; arr[i + 2] != '\0'; i++) {
-                int change1 = arr[i] - '0';
-                int change2 = arr[i + 1] - '0';
-                int change3 = arr[i + 2] - '0';
-                if(num1 == change1 && num2 == change2 && num3 == change3 || arr[i] == changeB) { // Сравниваем первое, второе и третье число массива
-                    n++;
-                    sum = b * n;
-                }
-            else;
-            }
-            return printf("%d\n", sum);
         }
     }
-    else
-    return printf("Sorry, but number have a \"-\"\n");
+}
+free(masb);                                                 //Освобождение памяти 2
+printf("\nN: %d\n", n);
+return n * bb;
 }
