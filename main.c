@@ -4,7 +4,7 @@ int X;
 int Y;
 void printmap();
 
-int main() {    
+int main(void) {    
     printmap();
 
     char movement;
