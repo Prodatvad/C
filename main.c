@@ -4,7 +4,7 @@
 int SumFunction(char *arr, int b);
 int SizeNumber(int z);
 
-int main() {
+int main(void) {
     int mb = 0;
     printf("Enter size arr: ");
     scanf("%d", &mb);
