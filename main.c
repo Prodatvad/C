@@ -1,16 +1,13 @@
-//3 with function print
-
 #include <stdio.h>
+
 void BigSm(char*);
 void Print(char*);
-int main(void) {
 
+int main(void) {
     char sym;
     printf("Big symbol: ");
     scanf("%c", &sym);
-
     BigSm(&sym);
-
     Print(&sym);
 
     return 0;
